@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
-
+from flask import *
 app = Flask(__name__)
+from collections import *
 
 @app.route("/calculator/greeting", methods=['GET'])
 def greeting():
@@ -17,6 +18,7 @@ def add():
     else:
         return jsonify({"error": "Missing 'first' or 'second' in request data"}), 400
 
+
 @app.route("/calculator/subtract", methods=['POST'])
 def subtract():
     data = request.json
@@ -28,5 +30,5 @@ def subtract():
     else:
         return jsonify({"error": "Missing 'first' or 'second' in request data"}), 400
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     app.run(port=8080, host='0.0.0.0')
